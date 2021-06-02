@@ -11,7 +11,7 @@ export const getContacts = (userId: string, search?: string) => async (dispatch:
 }
 
 export const addContact = (name: string, number: string, userId: string) => async (dispatch: any) => {
-    const {data} = await axios.post('/api/contact', {name, number, userId})
+    const {data} = await axios.post('http://localhost:4000/api/contact', {name, number, userId})
 
     dispatch({
         type: types.CREATE_CONTACT,
@@ -20,7 +20,7 @@ export const addContact = (name: string, number: string, userId: string) => asyn
 }
 
 export const updateContact = (name: string, number: string, id: string) => async (dispatch: any) => {
-    const {data} = await axios.put(`/api/contact/${id}`, {name, number})
+    const {data} = await axios.put(`http://localhost:4000/api/contact/${id}`, {name, number})
 
     dispatch({
         type: types.UPDATE_CONTACT,
@@ -29,7 +29,7 @@ export const updateContact = (name: string, number: string, id: string) => async
 }
 
 export const deleteContact = (id: string) => async (dispatch: any) => {
-    await axios.delete(`/api/contact/${id}`)
+    await axios.delete(`http://localhost:4000/api/contact/${id}`)
 
     dispatch({
         type: types.UPDATE_CONTACT,
